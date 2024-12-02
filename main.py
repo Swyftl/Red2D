@@ -1,6 +1,7 @@
 import Red2D
 import Red2D.Input
 import Red2D.Player
+
 Engine = Red2D.Engine(1280, 720)
 
 Character = Red2D.Player.Player(Engine.Graphics, 10, 10, 10, 10)
@@ -23,8 +24,10 @@ while Engine.running:
 
     # Set the frame up with background
     Engine.tick("White")
-    Engine.set_title("Frames Rendered: "+str(Engine.rendered_frames))
+    Engine.set_title("Frames Rendered: " + str(Engine.rendered_frames))
     # Render the player
     Character.render_player()
+    if move_up.just_pressed():
+        print("Just Pressed")
     # Finish up rendering and send the frame to the display
     Engine.render_frame()
