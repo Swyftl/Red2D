@@ -1,5 +1,3 @@
-import pygame.event
-
 import Red2D
 import Red2D.Input
 import Red2D.Player
@@ -13,6 +11,7 @@ move_up = Red2D.Input.Input("w")
 move_down = Red2D.Input.Input("s")
 
 while Engine.running:
+    # Character Movement
     if move_up.is_pressed():
         Character.position.y -= 1
     elif move_down.is_pressed():
@@ -21,7 +20,11 @@ while Engine.running:
         Character.position.x -= 1
     elif move_right.is_pressed():
         Character.position.x += 1
+
+    # Set the frame up with background
     Engine.tick("White")
-    Engine.set_title(Engine.rendered_frames)
+    Engine.set_title("Frames Rendered: "+str(Engine.rendered_frames))
+    # Render the player
     Character.render_player()
+    # Finish up rendering and send the frame to the display
     Engine.render_frame()
