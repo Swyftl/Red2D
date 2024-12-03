@@ -8,7 +8,7 @@ class Rectangle:
     def __init__(self, x, y, width, height, render, graphics):
         self.position = pygame.Vector2(x, y)
         self.size = pygame.Vector2(width, height)
-        self.render = render
+        self.Render = render
         self.graphics = graphics
         render.add_shape(self)
 
