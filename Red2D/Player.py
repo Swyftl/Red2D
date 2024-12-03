@@ -13,4 +13,4 @@ class Player:
 
     def render_player(self):
         if self.visible:
-            Red2D.Graphics.Graphics.render_rect(self.graphics, self.color, self.position.x, self.position.y, self.size.x, self.size.y)
+            Red2D.Graphics.Graphics.render(self.graphics, self.color, self.position.x, self.position.y, self.size.x, self.size.y)
