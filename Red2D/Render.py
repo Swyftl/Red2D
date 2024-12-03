@@ -13,8 +13,5 @@ class Render:
 
     def render(self):
         for shape in self.shapes:
-            # Render each shape. This is a placeholder for actual rendering code.
-            print(f'Rendering shape: {shape}')
-
             # Assuming each shape is an object with a render method or similar
             shape.render()
