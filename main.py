@@ -1,10 +1,11 @@
 import Red2D
 import Red2D.Input
-import Red2D.Player
+from Red2D.draw import Rectangle
 
 Engine = Red2D.Engine(1280, 720)
 
-Character = Red2D.Player.Player(Engine.Graphics, 0, 0, 10, 10)
+Character = Engine.new_player(0, 0, 10, 10)
+block = Rectangle(20, 20, 10, 10, Engine.Render, Engine.Graphics)
 
 move_left = Red2D.Input.Input("a")
 move_right = Red2D.Input.Input("d")
@@ -24,9 +25,8 @@ while Engine.running:
 
     # Set the frame up with background
     Engine.tick("White")
-    Engine.set_title("x: "+str(Character.position.x) + " Y: "+str(Character.position.y))
     # Render the player
-    Character.render_player()
+    Engine.Render.render()
     if move_up.is_just_pressed():
         print("Just Pressed")
     # Finish up rendering and send the frame to the display

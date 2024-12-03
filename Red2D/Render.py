@@ -5,8 +5,9 @@ import pygame
 
 
 class Render:
-    def __init__(self):
+    def __init__(self, Graphics):
         self.shapes = []
+        self.Graphics = Graphics
 
     def add_shape(self, shape):
         self.shapes.append(shape)
