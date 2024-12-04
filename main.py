@@ -1,6 +1,7 @@
 import Red2D
 import Red2D.Input
 from Red2D.draw import Rectangle
+import Red2D.TextRender
 
 Engine = Red2D.Engine(1280, 720)
 
@@ -11,6 +12,8 @@ move_left = Red2D.Input.Input("a")
 move_right = Red2D.Input.Input("d")
 move_up = Red2D.Input.Input("w")
 move_down = Red2D.Input.Input("s")
+
+TestText = Red2D.TextRender.Text("Testing", Engine.Screen)
 
 while Engine.running:
     # Character Movement
@@ -23,4 +26,5 @@ while Engine.running:
     elif move_right.is_key_down():
         Character.position.x += 1
 
+    TestText.render()
     Engine.render_frame()
