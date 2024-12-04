@@ -23,11 +23,4 @@ while Engine.running:
     elif move_right.is_key_down():
         Character.position.x += 1
 
-    # Set the frame up with background
-    Engine.tick("White")
-    # Render the player
-    Engine.Render.render()
-    if move_up.is_just_pressed():
-        print("Just Pressed")
-    # Finish up rendering and send the frame to the display
     Engine.render_frame()

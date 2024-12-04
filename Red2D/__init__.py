@@ -23,17 +23,23 @@ class Engine:
         self.Graphics = Graphics.Graphics(self.Screen)
         self.Render = Render.Render(Graphics)
 
-    def tick(self, background_color):
+        self.background_color = "white"
+
+    def render_frame(self):
+        # Start of frame rendering
         for event in pygame.event.get():
             if event == pygame.QUIT:
                 self.running = False
         try:
-            self.Screen.fill(background_color)
+            self.Screen.fill(self.background_color)
         except ValueError:
-            print(str(background_color)+" is not a valid colour, defaulting to white")
+            print(str(self.background_color)+" is not a valid colour, defaulting to white")
             self.Screen.fill("White")
 
-    def render_frame(self):
+        # rendering items
+        self.Render.render()
+
+        # End of frame rendering
         pygame.display.flip()
         self.Clock.tick(self.framerate)
         self.rendered_frames += 1
