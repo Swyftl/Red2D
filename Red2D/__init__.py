@@ -28,14 +28,16 @@ class Engine:
 
     def render_frame(self):
         # Start of frame rendering
-        for event in pygame.event.get():
-            if event == pygame.QUIT:
-                self.running = False
         try:
             self.Screen.fill(self.background_color)
         except ValueError:
             print(str(self.background_color)+" is not a valid colour, defaulting to white")
             self.Screen.fill("White")
+
+        for event in pygame.event.get():
+            print("Getting Events")
+            if event.type == pygame.QUIT:
+                self.running = False
 
         # rendering items
         self.Render.render()
