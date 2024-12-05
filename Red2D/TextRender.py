@@ -17,7 +17,11 @@ class Text:
             self.font_size = 22
 
         self.font_data = pygame.font.SysFont(self.text_font, self.font_size)
-        self.text_surface = self.font_data.render(text, False, (0, 0, 0))
+        self.text_surface = self.font_data.render(self.text, False, (0, 0, 0))
 
     def render(self):
         self.screen.blit(self.text_surface, (0, 0))
+
+    def update(self):
+        self.font_data = pygame.font.SysFont(self.text_font, self.font_size)
+        self.text_surface = self.font_data.render(self.text, False, (0, 0, 0))

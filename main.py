@@ -16,12 +16,13 @@ TestText = Engine.new_Text("This is a test", 100, 100)
 while Engine.running:
     # Character Movement
     if move_up.is_key_down():
-        Character.position.y -= 1
+        Character.position.y -= 100 * Engine.delta
     elif move_down.is_key_down():
-        Character.position.y += 1
+        Character.position.y += 100 * Engine.delta
     if move_left.is_key_down():
-        Character.position.x -= 1
+        Character.position.x -= 100 * Engine.delta
     elif move_right.is_key_down():
-        Character.position.x += 1
+        Character.position.x += 100 * Engine.delta
     TestText.text = str(Character.position)
+    TestText.update()
     Engine.render_frame()

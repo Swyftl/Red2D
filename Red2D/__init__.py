@@ -21,6 +21,8 @@ class Engine:
         self.running = True
         self.framerate = 60
 
+        self.delta = 1/self.framerate
+
         self.rendered_frames = 0
 
         self.Graphics = Graphics.Graphics(self.Screen)
@@ -37,7 +39,6 @@ class Engine:
             self.Screen.fill("White")
 
         for event in pygame.event.get():
-            print("Getting Events")
             if event.type == pygame.QUIT:
                 self.running = False
 
@@ -47,6 +48,7 @@ class Engine:
         # End of frame rendering
         pygame.display.flip()
         self.Clock.tick(self.framerate)
+        self.delta = 1/self.framerate
         self.rendered_frames += 1
 
     def set_title(self, title):
