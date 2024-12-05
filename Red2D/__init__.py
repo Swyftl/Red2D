@@ -64,7 +64,7 @@ class Engine:
         new_rectangle = Draw.Rectangle(x, y, width, height, self.Render, self.Graphics)
         return new_rectangle
 
-    def new_Text(self, text, x, y):
-        text_render = TextRender.Text(text, self.Screen, x, y)
+    def new_Text(self, text, x, y, **kwargs):
+        text_render = TextRender.Text(text, self.Screen, x, y, kwargs)
         self.Render.add_shape(text_render)
         return text_render
