@@ -4,6 +4,7 @@ import Red2D.Graphics
 import Red2D.Math
 import Red2D.Render
 import Red2D.Player
+import Red2D.Draw
 
 
 class Engine:
@@ -54,3 +55,7 @@ class Engine:
         player = Red2D.Player.Player(initial_x, initial_y, x_size, y_size, self.Screen)
         self.Render.add_shape(player)
         return player
+
+    def new_Rectangle(self, x, y, width, height):
+        new_rectangle = Draw.Rectangle(x, y, width, height, self.Render, self.Graphics)
+        return new_rectangle

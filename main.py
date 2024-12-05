@@ -1,12 +1,11 @@
 import Red2D
 import Red2D.Input
-from Red2D.draw import Rectangle
 import Red2D.TextRender
 
 Engine = Red2D.Engine(1280, 720)
 
 Character = Engine.new_player(0, 0, 10, 10)
-block = Rectangle(20, 20, 10, 10, Engine.Render, Engine.Graphics)
+block = Engine.new_Rectangle(20, 20, 10, 10)
 
 move_left = Red2D.Input.Input("a")
 move_right = Red2D.Input.Input("d")
