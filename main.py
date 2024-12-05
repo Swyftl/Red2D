@@ -1,6 +1,5 @@
 import Red2D
 import Red2D.Input
-import Red2D.TextRender
 
 Engine = Red2D.Engine(1280, 720)
 
