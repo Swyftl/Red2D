@@ -15,7 +15,7 @@ move_down = Red2D.Input.Input("s")
 # Test Button
 space = Red2D.Input.Input("space")
 
-TestText = Engine.new_Text("This is a test", 100, 100)
+TestText = Engine.new_Text("[0, 0]", 100, 100)
 
 while Engine.running:
     # Character Movement
