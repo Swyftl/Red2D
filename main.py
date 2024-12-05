@@ -24,4 +24,5 @@ while Engine.running:
         Character.position.x -= 1
     elif move_right.is_key_down():
         Character.position.x += 1
+    TestText.text = str(Character.position)
     Engine.render_frame()
