@@ -4,7 +4,10 @@ import Red2D.Graphics
 import Red2D.Math
 import Red2D.Render
 import Red2D.Player
+import Red2D.Draw
+import Red2D.TextRender
 
+pygame.font.init()
 
 class Engine:
 
@@ -27,14 +30,16 @@ class Engine:
 
     def render_frame(self):
         # Start of frame rendering
-        for event in pygame.event.get():
-            if event == pygame.QUIT:
-                self.running = False
         try:
             self.Screen.fill(self.background_color)
         except ValueError:
             print(str(self.background_color)+" is not a valid colour, defaulting to white")
             self.Screen.fill("White")
+
+        for event in pygame.event.get():
+            print("Getting Events")
+            if event.type == pygame.QUIT:
+                self.running = False
 
         # rendering items
         self.Render.render()
@@ -54,3 +59,12 @@ class Engine:
         player = Red2D.Player.Player(initial_x, initial_y, x_size, y_size, self.Screen)
         self.Render.add_shape(player)
         return player
+
+    def new_Rectangle(self, x, y, width, height):
+        new_rectangle = Draw.Rectangle(x, y, width, height, self.Render, self.Graphics)
+        return new_rectangle
+
+    def new_Text(self, text, x, y, **kwargs):
+        text_render = TextRender.Text(text, self.Screen, x, y, kwargs)
+        self.Render.add_shape(text_render)
+        return text_render
