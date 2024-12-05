@@ -12,7 +12,7 @@ move_right = Red2D.Input.Input("d")
 move_up = Red2D.Input.Input("w")
 move_down = Red2D.Input.Input("s")
 
-TestText = Red2D.TextRender.Text("Testing", Engine.Screen)
+TestText = Engine.new_Text("This is a test", 100, 100)
 
 while Engine.running:
     # Character Movement

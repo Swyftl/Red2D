@@ -1,9 +1,8 @@
 import pygame
-pygame.font.init()
 
 class Text:
 
-    def __init__(self, text, screen):
+    def __init__(self, text, screen, x, y):
         self.font = pygame.font.SysFont('Arial', 30)
         self.text_surface = self.font.render(text, False, (0, 0, 0))
         self.screen = screen

@@ -5,7 +5,9 @@ import Red2D.Math
 import Red2D.Render
 import Red2D.Player
 import Red2D.Draw
+import Red2D.TextRender
 
+pygame.font.init()
 
 class Engine:
 
@@ -61,3 +63,8 @@ class Engine:
     def new_Rectangle(self, x, y, width, height):
         new_rectangle = Draw.Rectangle(x, y, width, height, self.Render, self.Graphics)
         return new_rectangle
+
+    def new_Text(self, text, x, y):
+        text_render = TextRender.Text(text, self.Screen, x, y)
+        self.Render.add_shape(text_render)
+        return text_render
