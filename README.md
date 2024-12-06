@@ -2,6 +2,11 @@
 
 Red2D is a simple, easy-to-use 2D game engine written in Python. It is designed to help both beginner and intermediate developers create 2D games with minimal setup. The engine is lightweight and focused on ease of use, making it perfect for prototyping, learning, or building your next 2D game project.
 
+# Installer
+If you don't want to have to install the package from here, you can download the exe from [here](https://github.com/Swyftl/Red2D_Installer)
+
+This will have updates later on when multi files are implemented correctly, and it will generate the correct files for you to use in the project.
+
 ## Features
 
 - [X] Shape Rendering
