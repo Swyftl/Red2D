@@ -7,6 +7,7 @@ import Red2D.Player
 import Red2D.Draw
 import Red2D.TextRender
 import Red2D.Sprite
+import Red2D.Logging
 
 pygame.font.init()
 
@@ -28,6 +29,9 @@ class Engine:
 
         self.Graphics = Graphics.Graphics(self.Screen)
         self.Render = Render.Render(Graphics)
+        self.Logging = Red2D.Logging.Logging(True)
+
+        self.Logging.log("Initialized logging", level="Log")
 
         self.background_color = "white"
 
