@@ -5,6 +5,7 @@ Engine = Red2D.Engine(1280, 720)
 
 Character = Engine.new_player(0, 0, 10, 10)
 block = Engine.new_Rectangle(20, 20, 10, 10)
+test_sprite = Engine.new_Sprite(20, 20, 20, 20, (0, 0, 0))
 
 # Setting up the inputs
 move_left = Red2D.Input.Input("a")
