@@ -10,8 +10,9 @@ class Rectangle:
         self.size = pygame.Vector2(width, height)
         self.Render = render
         self.graphics = graphics
+        self.visible = True
         render.add_shape(self)
 
-
     def render(self):
-        self.graphics.render("red", self.position.x, self.position.y, self.size.x, self.size.y)
+        if self.visible:
+            self.graphics.render("red", self.position.x, self.position.y, self.size.x, self.size.y)

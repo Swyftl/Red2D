@@ -4,7 +4,9 @@ class Text:
 
     def __init__(self, text, screen, x, y, kwargs):
         self.screen = screen
-        
+        self.text = text
+        self.visible = True
+
         if "font" in kwargs:
             self.text_font = kwargs["font"]
         else:
@@ -15,8 +17,13 @@ class Text:
         else:
             self.font_size = 22
 
-        self.font = pygame.font.SysFont(self.text_font, self.font_size)
-        self.text_surface = self.font.render(text, False, (0, 0, 0))
+        self.font_data = pygame.font.SysFont(self.text_font, self.font_size)
+        self.text_surface = self.font_data.render(self.text, False, (0, 0, 0))
 
     def render(self):
-        self.screen.blit(self.text_surface, (0, 0))
+        if self.visible:
+            self.screen.blit(self.text_surface, (0, 0))
+
+    def update(self):
+        self.font_data = pygame.font.SysFont(self.text_font, self.font_size)
+        self.text_surface = self.font_data.render(self.text, False, (0, 0, 0))

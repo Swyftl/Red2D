@@ -6,6 +6,7 @@ import Red2D.Render
 import Red2D.Player
 import Red2D.Draw
 import Red2D.TextRender
+import Red2D.Sprite
 
 pygame.font.init()
 
@@ -20,6 +21,8 @@ class Engine:
 
         self.running = True
         self.framerate = 60
+
+        self.delta = 1/self.framerate
 
         self.rendered_frames = 0
 
@@ -37,7 +40,6 @@ class Engine:
             self.Screen.fill("White")
 
         for event in pygame.event.get():
-            print("Getting Events")
             if event.type == pygame.QUIT:
                 self.running = False
 
@@ -47,6 +49,7 @@ class Engine:
         # End of frame rendering
         pygame.display.flip()
         self.Clock.tick(self.framerate)
+        self.delta = 1/self.framerate
         self.rendered_frames += 1
 
     def set_title(self, title):
@@ -68,3 +71,8 @@ class Engine:
         text_render = TextRender.Text(text, self.Screen, x, y, kwargs)
         self.Render.add_shape(text_render)
         return text_render
+
+    def new_Sprite(self, x, y, width, height, color):
+        new_sprite = Sprite.Sprite(x, y, width, height, color)
+        self.Render.add_shape(new_sprite)
+        return new_sprite
