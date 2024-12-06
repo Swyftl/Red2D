@@ -6,7 +6,7 @@ Red2D is a simple, easy-to-use 2D game engine written in Python. It is designed 
 
 [x] Shape Rendering
 [x] Input Management
-[ ] Text Rendering
+[x] Text Rendering
 [ ] Scene Rendering
 [ ] Audio
 
