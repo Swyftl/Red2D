@@ -7,6 +7,7 @@ Character = Engine.new_player(0, 0, 10, 10)
 block = Engine.new_Rectangle(20, 20, 10, 10)
 test_sprite = Engine.new_Sprite(20, 20, 20, 20, (0, 0, 0))
 
+newButton = Engine.new_Button(100, 100, 100, 50, "This is a test")
 # Setting up the inputs
 move_left = Red2D.Input.Input("a")
 move_right = Red2D.Input.Input("d")
@@ -35,5 +36,6 @@ while Engine.running:
         else:
             TestText.visible = True
     TestText.text = str(Character.position)
+    newButton.button_clicked()
     TestText.update()
     Engine.render_frame()

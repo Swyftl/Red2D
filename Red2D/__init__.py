@@ -8,6 +8,7 @@ import Red2D.Draw
 import Red2D.TextRender
 import Red2D.Sprite
 import Red2D.Logging
+from Red2D.UserInterface import Button
 
 pygame.font.init()
 
@@ -80,3 +81,8 @@ class Engine:
         new_sprite = Sprite.Sprite(x, y, width, height, color)
         self.Render.add_shape(new_sprite)
         return new_sprite
+
+    def new_Button(self, x, y, width, height, text):
+        new_button = Button(x, y, width, height, text, self.Screen)
+        self.Render.add_shape(new_button)
+        return new_button
