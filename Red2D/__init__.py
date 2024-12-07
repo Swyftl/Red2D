@@ -1,4 +1,5 @@
 import pygame.time
+import os
 
 import Red2D.Graphics
 import Red2D.Math
@@ -15,6 +16,7 @@ pygame.font.init()
 class Engine:
 
     def __init__(self, window_x, window_y):
+
         self.window_x = window_x
         self.window_y = window_y
 
@@ -35,6 +37,22 @@ class Engine:
         self.Logging.log("Initialized logging", level="Log")
 
         self.background_color = "white"
+
+        self.CheckFilesExist()
+
+    def CheckFilesExist(self):
+        if not os.path.exists('./_internal'):
+            self.Logging.log("Internal Folder Not Found, Making Now")
+            os.mkdir('./_internal')
+        if not os.path.exists('./_internal/Assets'):
+            self.Logging.log("Internal Assets Folder Not Found, Making Now")
+            os.mkdir('./_internal/Assets')
+        if not os.path.exists('./_internal/Assets/Images'):
+            self.Logging.log("Internal Images Folder Not Found, Making Now")
+            os.mkdir('./_internal/Assets/Images')
+        if not os.path.exists('./_internal/Assets/Sounds'):
+            self.Logging.log("Internal Sounds Folder Not Found, Making Now")
+            os.mkdir('./_internal/Assets/Sounds')
 
     def render_frame(self):
         # Start of frame rendering
