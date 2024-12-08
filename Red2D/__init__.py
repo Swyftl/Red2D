@@ -30,8 +30,8 @@ class Engine:
 
         self.rendered_frames = 0
 
-        self.Graphics = Graphics.Graphics(self.Screen)
-        self.Render = Render.Render(Graphics)
+        self.Graphics = Red2D.Graphics.Graphics(self.Screen)
+        self.Render = Red2D.Render.Render(self.Graphics)
         self.Logging = Red2D.Logging.Logging(True)
 
         self.Logging.log("Initialized logging", level="Log")
@@ -87,16 +87,16 @@ class Engine:
         return player
 
     def new_Rectangle(self, x, y, width, height):
-        new_rectangle = Draw.Rectangle(x, y, width, height, self.Render, self.Graphics)
+        new_rectangle = Red2D.Draw.Rectangle(x, y, width, height, self.Render, self.Graphics)
         return new_rectangle
 
     def new_Text(self, text, x, y, **kwargs):
-        text_render = TextRender.Text(text, self.Screen, x, y, kwargs)
+        text_render = Red2D.TextRender.Text(text, self.Screen, x, y, kwargs)
         self.Render.add_shape(text_render)
         return text_render
 
     def new_Sprite(self, x, y, width, height, color):
-        new_sprite = Sprite.Sprite(x, y, width, height, color)
+        new_sprite = Red2D.Sprite.Sprite(x, y, width, height, color)
         self.Render.add_shape(new_sprite)
         return new_sprite
 
