@@ -14,9 +14,9 @@ class Input:
             return False
 
     def is_just_pressed(self):
-        if keyboard.is_pressed(self.key) and self.was_key_released == True:
+        if keyboard.is_pressed(self.key) and self.was_key_released:
             self.was_key_released = False
             return True
-        elif not keyboard.is_pressed(self.key) and self.was_key_released == False:
+        elif not keyboard.is_pressed(self.key) and not self.was_key_released:
             self.was_key_released = True
             return False
