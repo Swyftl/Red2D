@@ -9,7 +9,8 @@ import Red2D.Draw
 import Red2D.TextRender
 import Red2D.Sprite
 import Red2D.Logging
-from Red2D.UserInterface import Button
+import Red2D.UserInterface
+import Red2D.Input
 
 pygame.font.init()
 
@@ -33,6 +34,7 @@ class Engine:
         self.Graphics = Red2D.Graphics.Graphics(self.Screen)
         self.Render = Red2D.Render.Render(self.Graphics)
         self.Logging = Red2D.Logging.Logging(True)
+        self.Events = Red2D.Input.Event()
 
         self.Logging.log("Initialized logging", level="Log")
 
@@ -61,10 +63,15 @@ class Engine:
         except ValueError:
             print(str(self.background_color)+" is not a valid colour, defaulting to white")
             self.Screen.fill("White")
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                self.running = False
+        
+        self.Events.CheckEvents()
+        if self.Events.isQuit:
+            self.running = False
+            pygame.quit()
+        if self.Events.isLeftMouseDown:
+            Red2D.UserInterface.isMousePressed = True
+        else:
+            Red2D.UserInterface.isMousePressed = False
 
         # rendering items
         self.Render.render()
@@ -101,6 +108,6 @@ class Engine:
         return new_sprite
 
     def new_Button(self, x, y, width, height, text):
-        new_button = Button(x, y, width, height, text, self.Screen)
+        new_button = Red2D.UserInterface.Button(x, y, width, height, text, self.Screen)
         self.Render.add_shape(new_button)
         return new_button

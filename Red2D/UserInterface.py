@@ -3,6 +3,7 @@ import pygame.draw
 
 import Red2D
 
+isMousePressed = False
 
 class Button:
 
@@ -28,19 +29,14 @@ class Button:
 
     def mouse_hovering(self):
         mousePos = pygame.mouse.get_pos()
-        if (self.x - self.width / 2, self.y - self.width / 2) < mousePos < (
-        self.x + self.width / 2, self.y + self.width / 2):
+        if (self.x - self.width / 2, self.y - self.width / 2) < mousePos < (self.x + self.width / 2, self.y + self.width / 2):
             return True
         else:
             return False
 
     def button_clicked(self):
-        if self.mouse_hovering() and mouse.is_pressed() and self.ButtonReleased:
-            print("Clicked Button")
-            self.ButtonReleased = False
+        if isMousePressed and self.mouse_hovering():
+            print(pygame.mouse)
             return True
-        elif self.mouse_hovering() and not mouse.is_pressed() and not self.ButtonReleased:
-            self.ButtonReleased = True
-            return False
         else:
             return False
