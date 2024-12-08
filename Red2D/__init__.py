@@ -1,4 +1,5 @@
 import pygame.time
+import os
 
 import Red2D.Graphics
 import Red2D.Math
@@ -8,13 +9,15 @@ import Red2D.Draw
 import Red2D.TextRender
 import Red2D.Sprite
 import Red2D.Logging
-from Red2D.UserInterface import Button
+import Red2D.UserInterface
+import Red2D.Input
 
 pygame.font.init()
 
 class Engine:
 
     def __init__(self, window_x, window_y):
+
         self.window_x = window_x
         self.window_y = window_y
 
@@ -28,13 +31,30 @@ class Engine:
 
         self.rendered_frames = 0
 
-        self.Graphics = Graphics.Graphics(self.Screen)
-        self.Render = Render.Render(Graphics)
+        self.Graphics = Red2D.Graphics.Graphics(self.Screen)
+        self.Render = Red2D.Render.Render(self.Graphics)
         self.Logging = Red2D.Logging.Logging(True)
+        self.Events = Red2D.Input.Event()
 
         self.Logging.log("Initialized logging", level="Log")
 
         self.background_color = "white"
+
+        self.CheckFilesExist()
+
+    def CheckFilesExist(self):
+        if not os.path.exists('./_internal'):
+            self.Logging.log("Internal Folder Not Found, Making Now")
+            os.mkdir('./_internal')
+        if not os.path.exists('./_internal/Assets'):
+            self.Logging.log("Internal Assets Folder Not Found, Making Now")
+            os.mkdir('./_internal/Assets')
+        if not os.path.exists('./_internal/Assets/Images'):
+            self.Logging.log("Internal Images Folder Not Found, Making Now")
+            os.mkdir('./_internal/Assets/Images')
+        if not os.path.exists('./_internal/Assets/Sounds'):
+            self.Logging.log("Internal Sounds Folder Not Found, Making Now")
+            os.mkdir('./_internal/Assets/Sounds')
 
     def render_frame(self):
         # Start of frame rendering
@@ -43,10 +63,15 @@ class Engine:
         except ValueError:
             print(str(self.background_color)+" is not a valid colour, defaulting to white")
             self.Screen.fill("White")
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                self.running = False
+        
+        self.Events.CheckEvents()
+        if self.Events.isQuit:
+            self.running = False
+            pygame.quit()
+        if self.Events.isLeftMouseDown:
+            Red2D.UserInterface.isMousePressed = True
+        else:
+            Red2D.UserInterface.isMousePressed = False
 
         # rendering items
         self.Render.render()
@@ -69,20 +94,20 @@ class Engine:
         return player
 
     def new_Rectangle(self, x, y, width, height):
-        new_rectangle = Draw.Rectangle(x, y, width, height, self.Render, self.Graphics)
+        new_rectangle = Red2D.Draw.Rectangle(x, y, width, height, self.Render, self.Graphics)
         return new_rectangle
 
     def new_Text(self, text, x, y, **kwargs):
-        text_render = TextRender.Text(text, self.Screen, x, y, kwargs)
+        text_render = Red2D.TextRender.Text(text, self.Screen, x, y, kwargs)
         self.Render.add_shape(text_render)
         return text_render
 
     def new_Sprite(self, x, y, width, height, color):
-        new_sprite = Sprite.Sprite(x, y, width, height, color)
+        new_sprite = Red2D.Sprite.Sprite(x, y, width, height, color)
         self.Render.add_shape(new_sprite)
         return new_sprite
 
     def new_Button(self, x, y, width, height, text):
-        new_button = Button(x, y, width, height, text, self.Screen)
+        new_button = Red2D.UserInterface.Button(x, y, width, height, text, self.Screen)
         self.Render.add_shape(new_button)
         return new_button

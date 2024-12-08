@@ -1,5 +1,6 @@
 import keyboard
 import mouse
+import pygame
 
 class Input:
 
@@ -14,9 +15,36 @@ class Input:
             return False
 
     def is_just_pressed(self):
-        if keyboard.is_pressed(self.key) and self.was_key_released == True:
+        if keyboard.is_pressed(self.key) and self.was_key_released:
             self.was_key_released = False
             return True
-        elif not keyboard.is_pressed(self.key) and self.was_key_released == False:
+        elif not keyboard.is_pressed(self.key) and not self.was_key_released:
             self.was_key_released = True
             return False
+
+class Event:
+
+    def __init__(self):
+        self.isLeftMouseDown = False
+        self.isRightMouseDown = False
+        self.isQuit = False
+    
+    def CheckEvents(self):
+        for event in pygame.event.get():
+            # Checking if the close button is pressed
+            if event.type == pygame.QUIT:
+                self.isQuit = True
+            else:
+                self.isQuit
+            
+            # Checking if the MouseButtonLeft is pressed
+            if event.type == pygame.MOUSEBUTTONDOWN and pygame.mouse.get_pressed()[0]:
+                self.isLeftMouseDown = True
+            else:
+                self.isLeftMouseDown = False
+
+            # Checking if the MouseButtonRight is Pressed
+            if event.type == pygame.MOUSEBUTTONDOWN and pygame.mouse.get_pressed()[1]:
+                self.isRightMouseDown = True
+            else:
+                self.isRightMouseDown = False

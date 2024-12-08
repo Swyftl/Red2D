@@ -20,11 +20,11 @@ class Logging:
         if self.isDebug:
             match level:
                 case "Log":
-                    self.logFile.write("Log: "+text)
+                    self.logFile.write("Log: "+text+"\n")
                 case "Error":
-                    self.logFile.write("Error: "+text)
+                    self.logFile.write("Error: "+text+"\n")
                 case "Critical":
-                    self.logFile.write("Critical: "+text)
+                    self.logFile.write("Critical: "+text+"\n")
                 case _:
-                    self.logFile.write("Log: "+text)
+                    self.logFile.write("Log: "+text+"\n")
                     self.log("Invalid Level for Above Log", level="Critical")

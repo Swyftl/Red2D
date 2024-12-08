@@ -1,0 +1,12 @@
+pip
+wheel
+mouse
+setuptools
+pygame
+pyinstaller
+altgraph
+keyboard
+packaging
+pefile
+pywin32-ctypes
+pyinstaller-hooks-contrib
