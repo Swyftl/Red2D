@@ -3,12 +3,13 @@ import pygame.sprite
 
 class Sprite(pygame.sprite.Sprite):
 
-    def __init__(self, x, y, width, height, color):
+    def __init__(self, x, y, width, height, color, zindex):
         self.width = width
         self.height = height
         self.color = color
         self.x = x
         self.y = y
+        self.zindex = zindex
 
         super().__init__()
 

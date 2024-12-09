@@ -7,12 +7,13 @@ isMousePressed = False
 
 class Button:
 
-    def __init__(self, x, y, width, height, text, screen, **kwargs):
+    def __init__(self, x, y, width, height, text, screen, zindex,**kwargs):
         self.ButtonReleased = True
         self.x = x
         self.y = y
         self.width = width
         self.height = height
+        self.zindex = zindex
 
         self.text = text
 

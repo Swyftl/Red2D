@@ -87,27 +87,48 @@ class Engine:
 
     def set_framerate(self, framerate):
         self.framerate = int(framerate)
-
-    def new_player(self, initial_x, initial_y, x_size, y_size):
-        player = Red2D.Player.Player(initial_x, initial_y, x_size, y_size, self.Screen)
+    
+    # All of the stuff for passing the rendered items to the renderer
+    def new_player(self, initial_x, initial_y, x_size, y_size, **kwargs):
+        if "zindex" in kwargs:
+            zindex = kwargs.get("zindex")
+        else:
+            zindex = 0
+        player = Red2D.Player.Player(initial_x, initial_y, x_size, y_size, self.Screen, zindex)
         self.Render.add_shape(player)
         return player
 
-    def new_Rectangle(self, x, y, width, height):
-        new_rectangle = Red2D.Draw.Rectangle(x, y, width, height, self.Render, self.Graphics)
+    def new_Rectangle(self, x, y, width, height, **kwargs):
+        if "zindex" in kwargs:
+            zindex = kwargs.get("zindex")
+        else:
+            zindex = 0
+        new_rectangle = Red2D.Draw.Rectangle(x, y, width, height, self.Render, self.Graphics, zindex)
         return new_rectangle
 
     def new_Text(self, text, x, y, **kwargs):
-        text_render = Red2D.TextRender.Text(text, self.Screen, x, y, kwargs)
+        if "zindex" in kwargs:
+            zindex = kwargs.get("zindex")
+        else:
+            zindex = 0
+        text_render = Red2D.TextRender.Text(text, self.Screen, x, y, zindex,kwargs)
         self.Render.add_shape(text_render)
         return text_render
 
-    def new_Sprite(self, x, y, width, height, color):
-        new_sprite = Red2D.Sprite.Sprite(x, y, width, height, color)
+    def new_Sprite(self, x, y, width, height, color, **kwargs):
+        if "zindex" in kwargs:
+            zindex = kwargs.get("zindex")
+        else:
+            zindex = 0
+        new_sprite = Red2D.Sprite.Sprite(x, y, width, height, color, zindex)
         self.Render.add_shape(new_sprite)
         return new_sprite
 
-    def new_Button(self, x, y, width, height, text):
-        new_button = Red2D.UserInterface.Button(x, y, width, height, text, self.Screen)
+    def new_Button(self, x, y, width, height, text, **kwargs):
+        if "zindex" in kwargs:
+            zindex = kwargs.get("zindex")
+        else:
+            zindex = 0
+        new_button = Red2D.UserInterface.Button(x, y, width, height, text, self.Screen, zindex)
         self.Render.add_shape(new_button)
         return new_button

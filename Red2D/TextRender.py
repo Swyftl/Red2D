@@ -2,10 +2,11 @@ import pygame
 
 class Text:
 
-    def __init__(self, text, screen, x, y, kwargs):
+    def __init__(self, text, screen, x, y, zindex,kwargs):
         self.screen = screen
         self.text = text
         self.visible = True
+        self.zindex = zindex
 
         if "font" in kwargs:
             self.text_font = kwargs["font"]
