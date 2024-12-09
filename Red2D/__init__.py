@@ -29,7 +29,7 @@ class Engine:
 
         self.delta = 1/self.framerate
 
-        self.rendered_frames = 0
+        self.total_frames_rendered = 0
 
         self.Graphics = Red2D.Graphics.Graphics(self.Screen)
         self.Render = Red2D.Render.Render(self.Graphics)
@@ -80,7 +80,7 @@ class Engine:
         pygame.display.flip()
         self.Clock.tick(self.framerate)
         self.delta = 1/self.framerate
-        self.rendered_frames += 1
+        self.total_frames_rendered += 1
 
     def set_title(self, title):
         pygame.display.set_caption(str(title))
