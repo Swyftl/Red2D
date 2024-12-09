@@ -12,7 +12,10 @@ class Render:
     def add_shape(self, shape):
         self.shapes.append(shape)
 
+    def sortShapes(self):
+        sorted_shapes = sorted(self.shapes, key= lambda obj: obj.zindex)
+        return sorted_shapes
+
     def render(self):
-        for shape in self.shapes:
-            # Assuming each shape is an object with a render method or similar
+        for shape in self.sortShapes():
             shape.render()

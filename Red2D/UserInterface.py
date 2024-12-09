@@ -7,12 +7,13 @@ isMousePressed = False
 
 class Button:
 
-    def __init__(self, x, y, width, height, text, screen, **kwargs):
+    def __init__(self, x, y, width, height, text, screen, zindex,**kwargs):
         self.ButtonReleased = True
         self.x = x
         self.y = y
         self.width = width
         self.height = height
+        self.zindex = zindex
 
         self.text = text
 
@@ -35,8 +36,10 @@ class Button:
             return False
 
     def button_clicked(self):
-        if isMousePressed and self.mouse_hovering():
-            print(pygame.mouse)
+        if isMousePressed and self.ButtonReleased and self.mouse_hovering():
+            self.ButtonReleased = False
             return True
-        else:
+        if not isMousePressed and not self.ButtonReleased:
+            self.ButtonReleased = True
             return False
+

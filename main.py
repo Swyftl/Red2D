@@ -36,6 +36,5 @@ while Engine.running:
         else:
             TestText.visible = True
     TestText.text = str(Character.position)
-    newButton.button_clicked()
     TestText.update()
     Engine.render_frame()
