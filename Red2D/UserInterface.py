@@ -36,8 +36,10 @@ class Button:
             return False
 
     def button_clicked(self):
-        if isMousePressed and self.mouse_hovering():
-            print(pygame.mouse)
+        if isMousePressed and self.ButtonReleased and self.mouse_hovering():
+            self.ButtonReleased = False
             return True
-        else:
+        if not isMousePressed and not self.ButtonReleased:
+            self.ButtonReleased = True
             return False
+
