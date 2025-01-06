@@ -17,10 +17,7 @@ move_down = Red2D.Input.Input("s")
 x_movement = Red2D.Input.Axis(move_left, move_right)
 y_movement = Red2D.Input.Axis(move_up, move_down)
 
-TestText = Engine.new_Text("[0, 0]", 100, 100)
-
 while Engine.running:
     # Character Movement
-    Character.position.x += x_movement.get() * 100 * Engine.delta
-    Character.position.y += y_movement.get() * 100 * Engine.delta
+    Character.move(x_movement, y_movement)
     Engine.render_frame()
