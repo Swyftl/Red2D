@@ -14,16 +14,13 @@ move_right = Red2D.Input.Input("d")
 move_up = Red2D.Input.Input("w")
 move_down = Red2D.Input.Input("s")
 
+x_movement = Red2D.Input.Axis(move_left, move_right)
+y_movement = Red2D.Input.Axis(move_up, move_down)
+
 TestText = Engine.new_Text("[0, 0]", 100, 100)
 
 while Engine.running:
     # Character Movement
-    if move_up.is_key_down():
-        Character.position.y -= 100 * Engine.delta
-    elif move_down.is_key_down():
-        Character.position.y += 100 * Engine.delta
-    if move_left.is_key_down():
-        Character.position.x -= 100 * Engine.delta
-    elif move_right.is_key_down():
-        Character.position.x += 100 * Engine.delta
+    Character.position.x += x_movement.get() * 100 * Engine.delta
+    Character.position.y += y_movement.get() * 100 * Engine.delta
     Engine.render_frame()
