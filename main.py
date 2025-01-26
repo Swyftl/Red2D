@@ -1,5 +1,6 @@
 import Red2D
 import Red2D.Input
+import Red2D.Logging
 
 Engine = Red2D.Engine(1280, 720)
 
@@ -18,6 +19,10 @@ move_down = Red2D.Input.Input("s")
 space = Red2D.Input.Input("space")
 
 TestText = Engine.new_Text("[0, 0]", 100, 100)
+
+Engine.Logging.log("This is a test", level="Log")
+Engine.Logging.log("This is a test", level="Error")
+Engine.Logging.log("This is a test", level="Critical")
 
 while Engine.running:
     # Character Movement

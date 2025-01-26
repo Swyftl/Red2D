@@ -20,11 +20,15 @@ class Logging:
         if self.isDebug:
             match level:
                 case "Log":
+                    print(f"\32Log: {text}\33[0m")
                     self.logFile.write("Log: "+text+"\n")
                 case "Error":
+                    print(f"\33[91mError: {text}\31[0m")
                     self.logFile.write("Error: "+text+"\n")
                 case "Critical":
+                    print(f"\33[31mCritical: {text}\33[0m")
                     self.logFile.write("Critical: "+text+"\n")
                 case _:
+                    print(f"\32Log: {text}\33[0m")
                     self.logFile.write("Log: "+text+"\n")
                     self.log("Invalid Level for Above Log", level="Critical")
