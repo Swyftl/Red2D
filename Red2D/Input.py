@@ -21,6 +21,22 @@ class Input:
         elif not keyboard.is_pressed(self.key) and not self.was_key_released:
             self.was_key_released = True
             return False
+        
+class Axis:
+
+    def __init__(self, negative: Input, positive: Input):
+        self.negative = negative
+        self.positive = positive
+    
+    def get(self):
+        direction = 0
+        if self.negative.is_key_down():
+            direction -= 1
+        elif self.positive.is_key_down():
+            direction += 1
+        else:
+            direction = 0
+        return direction
 
 class Event:
 
