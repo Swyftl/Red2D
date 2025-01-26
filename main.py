@@ -14,10 +14,31 @@ move_right = Red2D.Input.Input("d")
 move_up = Red2D.Input.Input("w")
 move_down = Red2D.Input.Input("s")
 
-x_movement = Red2D.Input.Axis(move_left, move_right)
-y_movement = Red2D.Input.Axis(move_up, move_down)
+# Test Button
+space = Red2D.Input.Input("space")
+
+TestText = Engine.new_Text("[0, 0]", 100, 100)
+
+Engine.Logging.log("This is a test", level="Log")
+Engine.Logging.log("This is a test", level="Error")
+Engine.Logging.log("This is a test", level="Critical")
 
 while Engine.running:
     # Character Movement
-    Character.move(x_movement, y_movement)
+    if move_up.is_key_down():
+        Character.position.y -= 100 * Engine.delta
+    elif move_down.is_key_down():
+        Character.position.y += 100 * Engine.delta
+    if move_left.is_key_down():
+        Character.position.x -= 100 * Engine.delta
+    elif move_right.is_key_down():
+        Character.position.x += 100 * Engine.delta
+
+    if space.is_just_pressed():
+        if TestText.visible:
+            TestText.visible = False
+        else:
+            TestText.visible = True
+    TestText.text = str(Character.position)
+    TestText.update()
     Engine.render_frame()
