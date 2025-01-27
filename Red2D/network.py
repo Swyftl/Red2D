@@ -1,4 +1,17 @@
 import socket
+import Red2D.Logging as Logging
+
+class Network():
+    def __init__(self, port):
+        self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.port = port
+
+        self.socket.bind(("", self.port))
+        print("socket binded to port", self.port)
+
+        self.socket.listen(5)
+        print("socket is listening")
+
 
 '''
 This is a package that will be implemented and used later on. This will aim to provide the user with the ability to create and use servers for
