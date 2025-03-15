@@ -141,3 +141,12 @@ class Engine:
         new_physics_object = Red2D.PhysicsObject.PhysicsObject(x, y, width, height, zindex)
         self.Render.add_shape(new_physics_object)
         return new_physics_object
+    
+    def get_window_size(self):
+        return self.window_x, self.window_y
+    
+    def get_window_x(self):
+        return self.window_x
+    
+    def get_window_y(self):
+        return self.window_y
