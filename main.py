@@ -1,9 +1,17 @@
 import Red2D
 import Red2D.Input
 import Red2D.Logging
+import Red2D.config
+
+config = Red2D.config.config()
+
+config.set("window_x", "1280")
+config.set("window_y", "720")
+
+config.set("framerate", "60")
+config.set("background_color", "white")
 
 Engine = Red2D.Engine(1280, 720)
-
 Character = Engine.new_player(0, 0, 10, 10)
 block = Engine.new_Rectangle(20, 20, 10, 10)
 test_sprite = Engine.new_Sprite(20, 20, 20, 20, (0, 0, 0))
