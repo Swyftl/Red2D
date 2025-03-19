@@ -11,12 +11,15 @@ import Red2D.Sprite
 import Red2D.Logging
 import Red2D.UserInterface
 import Red2D.Input
+import Red2D.check_updates
 
 pygame.font.init()
 
 class Engine:
 
     def __init__(self, window_x, window_y):
+
+        Red2D.check_updates.check_for_updates()
 
         self.window_x = window_x
         self.window_y = window_y
