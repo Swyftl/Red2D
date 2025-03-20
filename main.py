@@ -51,6 +51,9 @@ while Engine.running:
     elif move_right.is_key_down():
         Character.position.x += 100 * Engine.delta
 
+    if space.is_just_pressed():
+        Engine.SceneManager.clear_all_scenes()
+
     TestText.text = str(Character.position)
     framerate_display.text = str(str(1/Engine.delta))
     TestText.update()
