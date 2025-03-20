@@ -13,8 +13,6 @@ config.set("background_color", "white")
 
 Engine = Red2D.Engine(1280, 720)
 Character = Engine.new_player(0, 0, 10, 10)
-block = Engine.new_Rectangle(20, 20, 10, 10)
-test_sprite = Engine.new_Sprite(20, 20, 20, 20, (0, 0, 0))
 
 newButton = Engine.new_Button(100, 100, 100, 50, "This is a test")
 # Setting up the inputs
@@ -27,10 +25,6 @@ move_down = Red2D.Input.Input("s")
 space = Red2D.Input.Input("space")
 
 TestText = Engine.new_Text("[0, 0]", 100, 100)
-
-Engine.Logging.log("This is a test", level="Log")
-Engine.Logging.log("This is a test", level="Error")
-Engine.Logging.log("This is a test", level="Critical")
 
 while Engine.running:
     # Character Movement
