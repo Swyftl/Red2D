@@ -45,6 +45,10 @@ class Engine:
 
         self.background_color = "white"
 
+        ProgramIcon = pygame.image.load('./Red2D/Red2D_Icon.ico')
+        pygame.display.set_icon(ProgramIcon)
+        pygame.display.set_caption('Red2D Engine')
+
         self.CheckFilesExist()
 
     def CheckFilesExist(self):

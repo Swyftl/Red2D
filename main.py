@@ -2,6 +2,7 @@ import Red2D
 import Red2D.Input
 import Red2D.Logging
 import Red2D.config
+import pygame
 
 config = Red2D.config.config()
 
@@ -13,6 +14,7 @@ config.set("background_color", "white")
 
 Engine = Red2D.Engine(1280, 720)
 Character = Engine.new_player(0, 0, 10, 10)
+Character.color = "Black"
 
 newButton = Engine.new_Button(100, 100, 100, 50, "This is a test")
 # Setting up the inputs
