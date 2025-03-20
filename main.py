@@ -15,6 +15,9 @@ config.set("background_color", "white")
 Engine = Red2D.Engine(1280, 720)
 Character = Engine.new_player(0, 0, 10, 10)
 
+Engine.set_title('Red2D Test Game')
+Engine.set_icon("./Red2D/Red2D_Icon.ico")
+
 # Setting up the inputs
 move_left = Red2D.Input.Input("a")
 move_right = Red2D.Input.Input("d")
@@ -38,11 +41,6 @@ while Engine.running:
     elif move_right.is_key_down():
         Character.position.x += 100 * Engine.delta
 
-    if space.is_just_pressed():
-        if TestText.visible:
-            TestText.visible = False
-        else:
-            TestText.visible = True
     TestText.text = str(Character.position)
     framerate_display.text = str(str(1/Engine.delta))
     TestText.update()

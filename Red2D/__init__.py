@@ -65,6 +65,13 @@ class Engine:
             self.Logging.log("Internal Sounds Folder Not Found, Making Now")
             os.mkdir('./_internal/Assets/Sounds')
 
+    def set_title(self, text):
+        pygame.display.set_caption(text)
+    
+    def set_icon(self, icon_location):
+        ProgramIcon = pygame.image.load(icon_location)
+        pygame.display.set_icon(ProgramIcon)
+
     def render_frame(self):
         # Start of frame rendering
         try:
