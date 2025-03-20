@@ -25,6 +25,7 @@ move_down = Red2D.Input.Input("s")
 space = Red2D.Input.Input("space")
 
 TestText = Engine.new_Text("[0, 0]", 100, 100)
+framerate_display = Engine.new_Text(str(1/Engine.delta), 100, 0)
 
 while Engine.running:
     # Character Movement
@@ -43,5 +44,7 @@ while Engine.running:
         else:
             TestText.visible = True
     TestText.text = str(Character.position)
+    framerate_display.text = str(str(1/Engine.delta))
     TestText.update()
+    framerate_display.update()
     Engine.render_frame()

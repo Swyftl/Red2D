@@ -15,6 +15,9 @@ class Render:
     def sortShapes(self):
         sorted_shapes = sorted(self.shapes, key= lambda obj: obj.zindex)
         return sorted_shapes
+    
+    def clear_render(self):
+        self.shapes.clear()
 
     def render(self):
         for shape in self.sortShapes():

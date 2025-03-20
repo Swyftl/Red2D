@@ -12,6 +12,7 @@ import Red2D.Logging
 import Red2D.UserInterface
 import Red2D.Input
 import Red2D.check_updates
+import Red2D.Scene
 
 pygame.font.init()
 
@@ -38,6 +39,7 @@ class Engine:
         self.Render = Red2D.Render.Render(self.Graphics)
         self.Logging = Red2D.Logging.Logging(True)
         self.Events = Red2D.Input.Event()
+        self.SceneManager = Red2D.Scene.Scene_Manager(self)
 
         self.Logging.log("Initialized logging", level="Log")
 
@@ -153,3 +155,6 @@ class Engine:
     
     def get_window_y(self):
         return self.window_y
+    
+    def new_scene(self):
+        return self.SceneManager.new_scene()
