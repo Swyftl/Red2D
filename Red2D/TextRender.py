@@ -7,6 +7,7 @@ class Text:
         self.text = text
         self.visible = True
         self.zindex = zindex
+        self.position = pygame.Vector2(x, y)
 
         if "font" in kwargs:
             self.text_font = kwargs["font"]
@@ -23,7 +24,7 @@ class Text:
 
     def render(self):
         if self.visible:
-            self.screen.blit(self.text_surface, (0, 0))
+            self.screen.blit(self.text_surface, self.position)
 
     def update(self):
         self.font_data = pygame.font.SysFont(self.text_font, self.font_size)
