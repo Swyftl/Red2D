@@ -1,6 +1,7 @@
 import Red2D
 import Red2D.Input
 import Red2D.Logging
+import Red2D.Scene
 import Red2D.config
 import pygame
 
@@ -12,8 +13,12 @@ config.set("window_y", "720")
 config.set("framerate", "60")
 config.set("background_color", "white")
 
+TestScene = Red2D.Scene.Scene()
+
 Engine = Red2D.Engine(1280, 720)
 Character = Engine.new_player(0, 0, 10, 10)
+
+TestScene.add_item(Character)
 
 Engine.set_title('Red2D Test Game')
 Engine.set_icon("./Red2D/Red2D_Icon.ico")
@@ -29,6 +34,11 @@ space = Red2D.Input.Input("space")
 
 TestText = Engine.new_Text("[0, 0]", 0, 0)
 framerate_display = Engine.new_Text(str(1/Engine.delta), 0, 50)
+
+TestScene.add_item(TestText)
+TestScene.add_item(framerate_display)
+
+Engine.SceneManager.load_scene(TestScene)
 
 while Engine.running:
     # Character Movement

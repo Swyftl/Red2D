@@ -23,9 +23,9 @@ class Scene_Manager:
         return scene
     
     def load_scene(self, scene):
-        self.Engine.Render.shapes.clear_render()
-        for item in scene:
-            self.Engine.Render.shapes.add_shape(item)
+        self.Engine.Render.clear_render()
+        for item in scene.items:
+            self.Engine.Render.add_shape(item)
     
     def clear_all_scenes(self):
-        self.Engine.Render.shapes.clear_render()
+        self.Engine.Render.clear_render()

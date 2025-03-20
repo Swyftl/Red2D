@@ -64,3 +64,6 @@ class Event:
                 self.isRightMouseDown = True
             else:
                 self.isRightMouseDown = False
+
+def get_mouse_position():
+    return pygame.mouse.get_pos()

@@ -111,7 +111,6 @@ class Engine:
         else:
             zindex = 0
         player = Red2D.Player.Player(initial_x, initial_y, x_size, y_size, self.Screen, zindex)
-        self.Render.add_shape(player)
         return player
 
     def new_Rectangle(self, x, y, width, height, **kwargs):
@@ -128,7 +127,6 @@ class Engine:
         else:
             zindex = 0
         text_render = Red2D.TextRender.Text(text, self.Screen, x, y, zindex,kwargs)
-        self.Render.add_shape(text_render)
         return text_render
 
     def new_Sprite(self, x, y, width, height, color, **kwargs):
@@ -137,7 +135,6 @@ class Engine:
         else:
             zindex = 0
         new_sprite = Red2D.Sprite.Sprite(x, y, width, height, color, zindex)
-        self.Render.add_shape(new_sprite)
         return new_sprite
 
     def new_Button(self, x, y, width, height, text, **kwargs):
@@ -146,7 +143,6 @@ class Engine:
         else:
             zindex = 0
         new_button = Red2D.UserInterface.Button(x, y, width, height, text, self.Screen, zindex)
-        self.Render.add_shape(new_button)
         return new_button
     
     def new_PhysicsObject(self, x, y, width, height, **kwargs):
@@ -155,7 +151,6 @@ class Engine:
         else:
             zindex = 0
         new_physics_object = Red2D.PhysicsObject.PhysicsObject(x, y, width, height, zindex)
-        self.Render.add_shape(new_physics_object)
         return new_physics_object
     
     def get_window_size(self):
