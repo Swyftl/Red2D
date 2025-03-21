@@ -23,12 +23,6 @@ TestScene.add_item(Character)
 Engine.set_title('Red2D Test Game')
 Engine.set_icon("./Red2D/Red2D_Icon.ico")
 
-# Setting up the inputs
-move_left = Red2D.Input.Input("a")
-move_right = Red2D.Input.Input("d")
-move_up = Red2D.Input.Input("w")
-move_down = Red2D.Input.Input("s")
-
 # Test Button
 space = Red2D.Input.Input("space")
 
@@ -42,13 +36,13 @@ Engine.SceneManager.load_scene(TestScene)
 
 while Engine.running:
     # Character Movement
-    if move_up.is_key_down():
+    if Engine.InputManager.is_button_down('move_up'):
         Character.position.y -= 100 * Engine.delta
-    elif move_down.is_key_down():
+    elif Engine.InputManager.is_button_down('move_down'):
         Character.position.y += 100 * Engine.delta
-    if move_left.is_key_down():
+    if Engine.InputManager.is_button_down('move_left'):
         Character.position.x -= 100 * Engine.delta
-    elif move_right.is_key_down():
+    elif Engine.InputManager.is_button_down('move_right'):
         Character.position.x += 100 * Engine.delta
 
     if space.is_just_pressed():

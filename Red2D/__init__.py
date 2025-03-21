@@ -40,6 +40,7 @@ class Engine:
         self.Logging = Red2D.Logging.Logging(True)
         self.Events = Red2D.Input.Event()
         self.SceneManager = Red2D.Scene.Scene_Manager(self)
+        self.InputManager = Red2D.Input.InputManager()
 
         self.Logging.log("Initialized logging", level="Log")
 

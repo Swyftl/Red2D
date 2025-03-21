@@ -1,45 +1,37 @@
 import keyboard
 import mouse
 import pygame
+import os
+import json
 
-class Input:
+class InputManager:
 
-    def __init__(self, key):
-        self.key = key
-        self.was_key_released = True
+    def __init__(self):
+        self.input_file = 'input.R2D' if os.path.isfile('input.R2D') else None
+        self.inputs = self.load_inputs()
 
-    def is_key_down(self):
-        if keyboard.is_pressed(self.key):
-            return True
-        else:
-            return False
+    def load_inputs(self):
+        if self.input_file:
+            try:
+                with open(self.input_file, 'r') as file:
+                    return json.load(file)
+            except (FileNotFoundError, json.JSONDecodeError):
+                print("Error loading input.R2D")
+                return {}
+        return {}
 
-    def is_just_pressed(self):
-        if keyboard.is_pressed(self.key) and self.was_key_released:
-            self.was_key_released = False
-            return True
-        elif not keyboard.is_pressed(self.key) and not self.was_key_released:
-            self.was_key_released = True
-            return False
-        
-class Axis:
+    def get_key(self, name):
+        for input_data in self.inputs:
+            if input_data['name'] == name:
+                return input_data['keys']
+        return []  # Return empty list if not found
 
-    def __init__(self, negative: Input, positive: Input):
-        self.negative = negative
-        self.positive = positive
-    
-    def get(self):
-        direction = 0
-        if self.negative.is_key_down():
-            direction -= 1
-        elif self.positive.is_key_down():
-            direction += 1
-        else:
-            direction = 0
-        return direction
+    def is_button_down(self, name):
+        keys = self.get_key(name)
+        return any(keyboard.is_pressed(key) for key in keys)
 
 class Event:
-
+        
     def __init__(self):
         self.isLeftMouseDown = False
         self.isRightMouseDown = False

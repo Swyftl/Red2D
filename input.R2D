@@ -1,0 +1,32 @@
+[
+    {
+        "name": "move_up",
+        "keys": [
+            "w"
+        ]
+    },
+    {
+        "name": "move_down",
+        "keys": [
+            "s"
+        ]
+    },
+    {
+        "name": "move_left",
+        "keys": [
+            "a"
+        ]
+    },
+    {
+        "name": "move_right",
+        "keys": [
+            "d"
+        ]
+    },
+    {
+        "name": "space",
+        "keys": [
+            "space"
+        ]
+    }
+]
