@@ -13,6 +13,8 @@ import Red2D.UserInterface
 import Red2D.Input
 import Red2D.check_updates
 import Red2D.Scene
+import Red2D.Input
+import Red2D.PhysicsObject
 
 pygame.font.init()
 
@@ -67,8 +69,8 @@ class Engine:
             os.mkdir('./_internal/Assets/Sounds')
 
     def set_title(self, text):
-        pygame.display.set_caption(text)
-    
+        pygame.display.set_caption(str(text))
+
     def set_icon(self, icon_location):
         ProgramIcon = pygame.image.load(icon_location)
         pygame.display.set_icon(ProgramIcon)
@@ -80,7 +82,7 @@ class Engine:
         except ValueError:
             print(str(self.background_color)+" is not a valid colour, defaulting to white")
             self.Screen.fill("White")
-        
+
         self.Events.CheckEvents()
         if self.Events.isQuit:
             self.running = False
@@ -99,12 +101,9 @@ class Engine:
         self.delta = 1/self.framerate
         self.total_frames_rendered += 1
 
-    def set_title(self, title):
-        pygame.display.set_caption(str(title))
-
     def set_framerate(self, framerate):
         self.framerate = int(framerate)
-    
+
     # All of the stuff for passing the rendered items to the renderer
     def new_player(self, initial_x, initial_y, x_size, y_size, **kwargs):
         if "zindex" in kwargs:
@@ -145,23 +144,23 @@ class Engine:
             zindex = 0
         new_button = Red2D.UserInterface.Button(x, y, width, height, text, self.Screen, zindex)
         return new_button
-    
+
     def new_PhysicsObject(self, x, y, width, height, **kwargs):
         if "zindex" in kwargs:
             zindex = kwargs.get("zindex")
         else:
             zindex = 0
-        new_physics_object = Red2D.PhysicsObject.PhysicsObject(x, y, width, height, zindex)
+        new_physics_object = Red2D.PhysicsObject.PhysicsObject(x, y, width, height)
         return new_physics_object
-    
+
     def get_window_size(self):
         return self.window_x, self.window_y
-    
+
     def get_window_x(self):
         return self.window_x
-    
+
     def get_window_y(self):
         return self.window_y
-    
+
     def new_scene(self):
         return self.SceneManager.new_scene()
