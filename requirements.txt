@@ -10,3 +10,4 @@ packaging
 pefile
 pywin32-ctypes
 pyinstaller-hooks-contrib
+imgui[full]
