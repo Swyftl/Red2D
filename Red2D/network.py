@@ -1,5 +1,3 @@
-import socket
-
 '''
 This is a package that will be implemented and used later on. This will aim to provide the user with the ability to create and use servers for
 their game. The main way this will be done is with the python socket package.

@@ -1,2 +1,28 @@
 Red2D/__pycache__/
 GameLog.log
+<<<<<<< HEAD
+=======
+Red2D/__pycache__/__init__.cpython-311.pyc
+Red2D/__pycache__/Draw.cpython-311.pyc
+Red2D/__pycache__/Graphics.cpython-311.pyc
+Red2D/__pycache__/Input.cpython-311.pyc
+Red2D/__pycache__/Logging.cpython-311.pyc
+Red2D/__pycache__/Math.cpython-311.pyc
+Red2D/__pycache__/Player.cpython-311.pyc
+Red2D/__pycache__/Render.cpython-311.pyc
+Red2D/__pycache__/Sprite.cpython-311.pyc
+Red2D/__pycache__/TextRender.cpython-311.pyc
+Red2D/__pycache__/UserInterface.cpython-311.pyc
+Red2D/__pycache__/__init__.cpython-313.pyc
+Red2D/__pycache__/Draw.cpython-313.pyc
+Red2D/__pycache__/Graphics.cpython-313.pyc
+Red2D/__pycache__/Input.cpython-313.pyc
+Red2D/__pycache__/Logging.cpython-313.pyc
+Red2D/__pycache__/Math.cpython-313.pyc
+Red2D/__pycache__/Player.cpython-313.pyc
+Red2D/__pycache__/Render.cpython-313.pyc
+Red2D/__pycache__/Sprite.cpython-313.pyc
+Red2D/__pycache__/TextRender.cpython-313.pyc
+Red2D/__pycache__/UserInterface.cpython-313.pyc
+venv/
+>>>>>>> 20f0cb274e31e0d8515d8e2c825ef6fa205eb34c
