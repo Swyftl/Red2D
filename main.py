@@ -1,55 +1,5 @@
 import Red2D
-import Red2D.Input
-import Red2D.Logging
-import Red2D.Scene
-import Red2D.config
-import pygame
 
-config = Red2D.config.config()
+Engine = Red2D.Engine()
 
-config.set("window_x", "1280")
-config.set("window_y", "720")
-
-config.set("framerate", "60")
-config.set("background_color", "white")
-
-TestScene = Red2D.Scene.Scene()
-
-Engine = Red2D.Engine(1280, 720)
-Character = Engine.new_player(0, 0, 10, 10)
-
-TestScene.add_item(Character)
-
-Engine.set_title('Red2D Test Game')
-Engine.set_icon("./Red2D/Red2D_Icon.ico")
-
-# Test Button
-space = Red2D.Input.Input("space")
-
-TestText = Engine.new_Text("[0, 0]", 0, 0)
-framerate_display = Engine.new_Text(str(1/Engine.delta), 0, 50)
-
-TestScene.add_item(TestText)
-TestScene.add_item(framerate_display)
-
-Engine.SceneManager.load_scene(TestScene)
-
-while Engine.running:
-    # Character Movement
-    if Engine.InputManager.is_button_down('move_up'):
-        Character.position.y -= 100 * Engine.delta
-    elif Engine.InputManager.is_button_down('move_down'):
-        Character.position.y += 100 * Engine.delta
-    if Engine.InputManager.is_button_down('move_left'):
-        Character.position.x -= 100 * Engine.delta
-    elif Engine.InputManager.is_button_down('move_right'):
-        Character.position.x += 100 * Engine.delta
-
-    if space.is_just_pressed():
-        Engine.SceneManager.clear_all_scenes()
-
-    TestText.text = str(Character.position)
-    framerate_display.text = str(str(1/Engine.delta))
-    TestText.update()
-    framerate_display.update()
-    Engine.render_frame()
+Engine.quit()
